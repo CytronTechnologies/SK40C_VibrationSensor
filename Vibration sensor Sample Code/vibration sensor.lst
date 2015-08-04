@@ -1,0 +1,1309 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.80 build 6738 
+                                                                                               Mon Aug 04 12:26:56 2014
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 6738
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6738"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           # 16 "C:\Users\Cytron-Jogi\Desktop\Vinration sensor\Vibration Sensor.c"
+    43                           	psect config,class=CONFIG,delta=2 ;#
+    44                           # 16 "C:\Users\Cytron-Jogi\Desktop\Vinration sensor\Vibration Sensor.c"
+    45  2007  3F32               	dw 0x3F32 ;#
+    46                           	FNCALL	_main,_send_config
+    47                           	FNCALL	_main,_lcd_clr
+    48                           	FNCALL	_main,_lcd_goto
+    49                           	FNCALL	_main,_send_string
+    50                           	FNCALL	_main,_delay
+    51                           	FNCALL	_send_string,_send_char
+    52                           	FNCALL	_lcd_goto,_send_config
+    53                           	FNCALL	_lcd_clr,_send_config
+    54                           	FNCALL	_lcd_clr,_delay
+    55                           	FNCALL	_send_char,_delay
+    56                           	FNCALL	_send_config,_delay
+    57                           	FNROOT	_main
+    58                           	global	_PORTD
+    59                           psect	text156,local,class=CODE,delta=2
+    60                           global __ptext156
+    61  0000                     __ptext156:
+    62  0008                     _PORTD	set	8
+    63                           	global	_RB0
+    64  0030                     _RB0	set	48
+    65                           	global	_RB4
+    66  0034                     _RB4	set	52
+    67                           	global	_RB5
+    68  0035                     _RB5	set	53
+    69                           	global	_RB6
+    70  0036                     _RB6	set	54
+    71                           	global	_RB7
+    72  0037                     _RB7	set	55
+    73                           	global	_ADCON1
+    74  009F                     _ADCON1	set	159
+    75                           	global	_TRISA
+    76  0085                     _TRISA	set	133
+    77                           	global	_TRISB
+    78  0086                     _TRISB	set	134
+    79                           	global	_TRISD
+    80  0088                     _TRISD	set	136
+    81                           psect	strings,class=STRING,delta=2
+    82                           global __pstrings
+    83  0003                     __pstrings:
+    84                           ;	global	stringdir,stringtab,__stringbase
+    85  0003                     stringtab:
+    86                           ;	String table - string pointers are 1 byte each
+    87  0003                     stringcode:stringdir:
+      + 0003                     stringdir:	
+    88  0003  3000               movlw high(stringdir)
+    89  0004  008A               movwf pclath
+    90  0005  0804               movf fsr,w
+    91  0006  0A84               incf fsr
+    92  0007  0782               	addwf pc
+    93  0008                     __stringbase:
+    94  0008  3400               	retlw	0
+    95                           psect	strings
+    96                           	
+    97  0009                     STR_1:	
+    98  0009  3456               	retlw	86	;'V'
+    99  000A  3449               	retlw	73	;'I'
+   100  000B  3442               	retlw	66	;'B'
+   101  000C  3452               	retlw	82	;'R'
+   102  000D  342E               	retlw	46	;'.'
+   103  000E  3420               	retlw	32	;' '
+   104  000F  3453               	retlw	83	;'S'
+   105  0010  3445               	retlw	69	;'E'
+   106  0011  344E               	retlw	78	;'N'
+   107  0012  3453               	retlw	83	;'S'
+   108  0013  344F               	retlw	79	;'O'
+   109  0014  3452               	retlw	82	;'R'
+   110  0015  3400               	retlw	0
+   111                           psect	strings
+   112                           	
+   113  0016                     STR_3:	
+   114  0016  3442               	retlw	66	;'B'
+   115  0017  3475               	retlw	117	;'u'
+   116  0018  347A               	retlw	122	;'z'
+   117  0019  347A               	retlw	122	;'z'
+   118  001A  3465               	retlw	101	;'e'
+   119  001B  3472               	retlw	114	;'r'
+   120  001C  3420               	retlw	32	;' '
+   121  001D  344F               	retlw	79	;'O'
+   122  001E  3446               	retlw	70	;'F'
+   123  001F  3446               	retlw	70	;'F'
+   124  0020  3420               	retlw	32	;' '
+   125  0021  3400               	retlw	0
+   126                           psect	strings
+   127                           	
+   128  0022                     STR_2:	
+   129  0022  3442               	retlw	66	;'B'
+   130  0023  3475               	retlw	117	;'u'
+   131  0024  347A               	retlw	122	;'z'
+   132  0025  347A               	retlw	122	;'z'
+   133  0026  3465               	retlw	101	;'e'
+   134  0027  3472               	retlw	114	;'r'
+   135  0028  3420               	retlw	32	;' '
+   136  0029  344F               	retlw	79	;'O'
+   137  002A  344E               	retlw	78	;'N'
+   138  002B  3420               	retlw	32	;' '
+   139  002C  3400               	retlw	0
+   140                           psect	strings
+   141                           	file	"vibration sensor.as"
+   142                           	line	#
+   143                           psect cinit,class=CODE,delta=2
+   144                           global start_initialization
+   145  06A5                     start_initialization:
+   146                           
+   147                           psect cinit,class=CODE,delta=2
+   148                           global end_of_initialization
+   149                           
+   150                           ;End of C runtime variable initialization code
+   151                           
+   152  06A5                     end_of_initialization:
+   153  06A5  0183               clrf status
+   154  06A6  120A  118A  2F7A   ljmp _main	;jump to C main() function
+   155                           psect	cstackCOMMON,class=COMMON,space=1
+   156                           global __pcstackCOMMON
+   157  0070                     __pcstackCOMMON:
+   158                           	global	?_send_config
+   159  0070                     ?_send_config:	; 0 bytes @ 0x0
+   160                           	global	?_lcd_clr
+   161  0070                     ?_lcd_clr:	; 0 bytes @ 0x0
+   162                           	global	?_lcd_goto
+   163  0070                     ?_lcd_goto:	; 0 bytes @ 0x0
+   164                           	global	?_send_string
+   165  0070                     ?_send_string:	; 0 bytes @ 0x0
+   166                           	global	?_delay
+   167  0070                     ?_delay:	; 0 bytes @ 0x0
+   168                           	global	?_main
+   169  0070                     ?_main:	; 0 bytes @ 0x0
+   170                           	global	?_send_char
+   171  0070                     ?_send_char:	; 0 bytes @ 0x0
+   172                           	global	delay@data
+   173  0070                     delay@data:	; 4 bytes @ 0x0
+   174  0070                     	ds	4
+   175                           	global	??_delay
+   176  0074                     ??_delay:	; 0 bytes @ 0x4
+   177  0074                     	ds	4
+   178                           	global	??_send_config
+   179  0078                     ??_send_config:	; 0 bytes @ 0x8
+   180                           	global	??_send_char
+   181  0078                     ??_send_char:	; 0 bytes @ 0x8
+   182                           	global	send_config@data
+   183  0078                     send_config@data:	; 1 bytes @ 0x8
+   184                           	global	send_char@data
+   185  0078                     send_char@data:	; 1 bytes @ 0x8
+   186  0078                     	ds	1
+   187                           	global	??_lcd_clr
+   188  0079                     ??_lcd_clr:	; 0 bytes @ 0x9
+   189                           	global	??_lcd_goto
+   190  0079                     ??_lcd_goto:	; 0 bytes @ 0x9
+   191                           	global	??_send_string
+   192  0079                     ??_send_string:	; 0 bytes @ 0x9
+   193  0079                     	ds	1
+   194                           	global	lcd_goto@data
+   195  007A                     lcd_goto@data:	; 1 bytes @ 0xA
+   196                           	global	send_string@s
+   197  007A                     send_string@s:	; 1 bytes @ 0xA
+   198  007A                     	ds	1
+   199                           	global	??_main
+   200  007B                     ??_main:	; 0 bytes @ 0xB
+   201                           psect	cstackBANK0,class=BANK0,space=1
+   202                           global __pcstackBANK0
+   203  0020                     __pcstackBANK0:
+   204                           	global	main@delay_time
+   205  0020                     main@delay_time:	; 4 bytes @ 0x0
+   206  0020                     	ds	4
+   207 ;;Data sizes: Strings 36, constant 0, data 0, bss 0, persistent 0 stack 0
+   208 ;;Auto spaces:   Size  Autos    Used
+   209 ;; COMMON          14     11      11
+   210 ;; BANK0           80      4       4
+   211 ;; BANK1           80      0       0
+   212 ;; BANK3           96      0       0
+   213 ;; BANK2           96      0       0
+   214                           
+   215 ;;
+   216 ;; Pointer list with targets:
+   217                           
+   218 ;; send_string@s	PTR const unsigned char  size(1) Largest target is 13
+   219 ;;		 -> STR_3(CODE[12]), STR_2(CODE[11]), STR_1(CODE[13]), 
+   220 ;;
+   221                           
+   222                           
+   223 ;;
+   224 ;; Critical Paths under _main in COMMON
+   225 ;;
+   226 ;;   _main->_lcd_goto
+   227 ;;   _main->_send_string
+   228 ;;   _send_string->_send_char
+   229 ;;   _lcd_goto->_send_config
+   230 ;;   _lcd_clr->_send_config
+   231 ;;   _send_char->_delay
+   232 ;;   _send_config->_delay
+   233 ;;
+   234 ;; Critical Paths under _main in BANK0
+   235 ;;
+   236 ;;   None.
+   237 ;;
+   238 ;; Critical Paths under _main in BANK1
+   239 ;;
+   240 ;;   None.
+   241 ;;
+   242 ;; Critical Paths under _main in BANK3
+   243 ;;
+   244 ;;   None.
+   245 ;;
+   246 ;; Critical Paths under _main in BANK2
+   247 ;;
+   248 ;;   None.
+   249                           
+   250 ;;
+   251 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   252 ;;
+   253                           
+   254 ;;
+   255 ;;Call Graph Tables:
+   256 ;;
+   257 ;; ---------------------------------------------------------------------------------
+   258 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   259 ;; ---------------------------------------------------------------------------------
+   260 ;; (0) _main                                                 4     4      0     515
+   261 ;;                                              0 BANK0      4     4      0
+   262 ;;                        _send_config
+   263 ;;                            _lcd_clr
+   264 ;;                           _lcd_goto
+   265 ;;                        _send_string
+   266 ;;                              _delay
+   267 ;; ---------------------------------------------------------------------------------
+   268 ;; (1) _send_string                                          2     2      0     134
+   269 ;;                                              9 COMMON     2     2      0
+   270 ;;                          _send_char
+   271 ;; ---------------------------------------------------------------------------------
+   272 ;; (1) _lcd_goto                                             2     2      0     156
+   273 ;;                                              9 COMMON     2     2      0
+   274 ;;                        _send_config
+   275 ;; ---------------------------------------------------------------------------------
+   276 ;; (1) _lcd_clr                                              0     0      0     112
+   277 ;;                        _send_config
+   278 ;;                              _delay
+   279 ;; ---------------------------------------------------------------------------------
+   280 ;; (2) _send_char                                            1     1      0      67
+   281 ;;                                              8 COMMON     1     1      0
+   282 ;;                              _delay
+   283 ;; ---------------------------------------------------------------------------------
+   284 ;; (2) _send_config                                          1     1      0      67
+   285 ;;                                              8 COMMON     1     1      0
+   286 ;;                              _delay
+   287 ;; ---------------------------------------------------------------------------------
+   288 ;; (1) _delay                                                8     4      4      45
+   289 ;;                                              0 COMMON     8     4      4
+   290 ;; ---------------------------------------------------------------------------------
+   291 ;; Estimated maximum stack depth 2
+   292 ;; ---------------------------------------------------------------------------------
+   293                           
+   294 ;; Call Graph Graphs:
+   295                           
+   296 ;; _main (ROOT)
+   297 ;;   _send_config
+   298 ;;     _delay
+   299 ;;   _lcd_clr
+   300 ;;     _send_config
+   301 ;;       _delay
+   302 ;;     _delay
+   303 ;;   _lcd_goto
+   304 ;;     _send_config
+   305 ;;       _delay
+   306 ;;   _send_string
+   307 ;;     _send_char
+   308 ;;       _delay
+   309 ;;   _delay
+   310 ;;
+   311                           
+   312 ;; Address spaces:
+   313                           
+   314 ;;Name               Size   Autos  Total    Cost      Usage
+   315 ;;BITCOMMON            E      0       0       0        0.0%
+   316 ;;EEDATA             100      0       0       0        0.0%
+   317 ;;NULL                 0      0       0       0        0.0%
+   318 ;;CODE                 0      0       0       0        0.0%
+   319 ;;COMMON               E      B       B       1       78.6%
+   320 ;;BITSFR0              0      0       0       1        0.0%
+   321 ;;SFR0                 0      0       0       1        0.0%
+   322 ;;BITSFR1              0      0       0       2        0.0%
+   323 ;;SFR1                 0      0       0       2        0.0%
+   324 ;;STACK                0      0       3       2        0.0%
+   325 ;;ABS                  0      0       0       3        0.0%
+   326 ;;BITBANK0            50      0       0       4        0.0%
+   327 ;;BITSFR3              0      0       0       4        0.0%
+   328 ;;SFR3                 0      0       0       4        0.0%
+   329 ;;BANK0               50      4       4       5        5.0%
+   330 ;;BITSFR2              0      0       0       5        0.0%
+   331 ;;SFR2                 0      0       0       5        0.0%
+   332 ;;BITBANK1            50      0       0       6        0.0%
+   333 ;;BANK1               50      0       0       7        0.0%
+   334 ;;BITBANK3            60      0       0       8        0.0%
+   335 ;;BANK3               60      0       0       9        0.0%
+   336 ;;BITBANK2            60      0       0      10        0.0%
+   337 ;;BANK2               60      0       0      11        0.0%
+   338 ;;DATA                 0      0       0      12        0.0%
+   339                           
+   340                           	global	_main
+   341                           psect	maintext,global,class=CODE,delta=2
+   342                           global __pmaintext
+   343  077A                     __pmaintext:
+   344                           
+   345 ;; *************** function _main *****************
+   346 ;; Defined at:
+   347 ;;		line 48 in file "C:\Users\Cytron-Jogi\Desktop\Vinration sensor\Vibration Sensor.c"
+   348 ;; Parameters:    Size  Location     Type
+   349 ;;		None
+   350 ;; Auto vars:     Size  Location     Type
+   351 ;;  delay_time      4    0[BANK0 ] unsigned long 
+   352 ;; Return value:  Size  Location     Type
+   353 ;;		None               void
+   354 ;; Registers used:
+   355 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   356 ;; Tracked objects:
+   357 ;;		On entry : 17F/0
+   358 ;;		On exit  : 0/0
+   359 ;;		Unchanged: 0/0
+   360 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   361 ;;      Params:         0       0       0       0       0
+   362 ;;      Locals:         0       4       0       0       0
+   363 ;;      Temps:          0       0       0       0       0
+   364 ;;      Totals:         0       4       0       0       0
+   365 ;;Total ram usage:        4 bytes
+   366 ;; Hardware stack levels required when called:    3
+   367 ;; This function calls:
+   368 ;;		_send_config
+   369 ;;		_lcd_clr
+   370 ;;		_lcd_goto
+   371 ;;		_send_string
+   372 ;;		_delay
+   373 ;; This function is called by:
+   374 ;;		Startup code after reset
+   375 ;; This function uses a non-reentrant model
+   376 ;;
+   377                           psect	maintext
+   378                           	file	"C:\Users\Cytron-Jogi\Desktop\Vinration sensor\Vibration Sensor.c"
+   379                           	line	48
+   380                           	global	__size_of_main
+   381  0086                     	__size_of_main	equ	__end_of_main-_main
+   382                           	
+   383  077A                     _main:	
+   384                           	opt	stack 5
+   385                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   386                           	line	49
+   387                           	
+   388  077A                     l1908:	
+   389                           ;Vibration Sensor.c: 49: unsigned long delay_time=5000;
+   390  077A  3000               	movlw	0
+   391  077B  1283               	bcf	status, 5	;RP0=0, select bank0
+   392  077C  1303               	bcf	status, 6	;RP1=0, select bank0
+   393  077D  00A3               	movwf	(main@delay_time+3)
+   394  077E  3000               	movlw	0
+   395  077F  00A2               	movwf	(main@delay_time+2)
+   396  0780  3013               	movlw	013h
+   397  0781  00A1               	movwf	(main@delay_time+1)
+   398  0782  3088               	movlw	088h
+   399  0783  00A0               	movwf	(main@delay_time)
+   400                           
+   401                           	line	52
+   402                           ;Vibration Sensor.c: 52: TRISB = 0b00000011;
+   403  0784  3003               	movlw	(03h)
+   404  0785  1683               	bsf	status, 5	;RP0=1, select bank1
+   405  0786  1303               	bcf	status, 6	;RP1=0, select bank1
+   406  0787  0086               	movwf	(134)^080h	;volatile
+   407                           	line	53
+   408                           	
+   409  0788                     l1910:	
+   410                           ;Vibration Sensor.c: 53: TRISD = 0b00000000;
+   411  0788  0188               	clrf	(136)^080h	;volatile
+   412                           	line	54
+   413                           	
+   414  0789                     l1912:	
+   415                           ;Vibration Sensor.c: 54: TRISA = 0b00000111;
+   416  0789  3007               	movlw	(07h)
+   417  078A  0085               	movwf	(133)^080h	;volatile
+   418                           	line	57
+   419                           	
+   420  078B                     l1914:	
+   421                           ;Vibration Sensor.c: 57: ADCON1 = 0b00000110;
+   422  078B  3006               	movlw	(06h)
+   423  078C  009F               	movwf	(159)^080h	;volatile
+   424                           	line	60
+   425                           	
+   426  078D                     l1916:	
+   427                           ;Vibration Sensor.c: 60: send_config(0b00000001);
+   428  078D  3001               	movlw	(01h)
+   429  078E  120A  118A  26DA   	fcall	_send_config
+              120A  118A         
+   430                           	line	61
+   431                           	
+   432  0793                     l1918:	
+   433                           ;Vibration Sensor.c: 61: send_config(0b00000010);
+   434  0793  3002               	movlw	(02h)
+   435  0794  120A  118A  26DA   	fcall	_send_config
+              120A  118A         
+   436                           	line	62
+   437                           	
+   438  0799                     l1920:	
+   439                           ;Vibration Sensor.c: 62: send_config(0b00000110);
+   440  0799  3006               	movlw	(06h)
+   441  079A  120A  118A  26DA   	fcall	_send_config
+              120A  118A         
+   442                           	line	63
+   443                           	
+   444  079F                     l1922:	
+   445                           ;Vibration Sensor.c: 63: send_config(0b00001100);
+   446  079F  300C               	movlw	(0Ch)
+   447  07A0  120A  118A  26DA   	fcall	_send_config
+              120A  118A         
+   448                           	line	64
+   449                           	
+   450  07A5                     l1924:	
+   451                           ;Vibration Sensor.c: 64: send_config(0b00111000);
+   452  07A5  3038               	movlw	(038h)
+   453  07A6  120A  118A  26DA   	fcall	_send_config
+              120A  118A         
+   454                           	line	67
+   455                           	
+   456  07AB                     l1926:	
+   457                           ;Vibration Sensor.c: 67: lcd_clr();
+   458  07AB  120A  118A  26A9   	fcall	_lcd_clr
+              120A  118A         
+   459                           	line	68
+   460                           	
+   461  07B0                     l1928:	
+   462                           ;Vibration Sensor.c: 68: lcd_goto(0);
+   463  07B0  3000               	movlw	(0)
+   464  07B1  120A  118A  26BD   	fcall	_lcd_goto
+              120A  118A         
+   465                           	line	69
+   466                           	
+   467  07B6                     l1930:	
+   468                           ;Vibration Sensor.c: 69: send_string("VIBR. SENSOR");
+   469  07B6  3001               	movlw	((STR_1-__stringbase))&0ffh
+   470  07B7  120A  118A  2724   	fcall	_send_string
+              120A  118A         
+   471                           	line	71
+   472                           	
+   473  07BC                     l1932:	
+   474                           ;Vibration Sensor.c: 71: RB6=0;
+   475  07BC  1283               	bcf	status, 5	;RP0=0, select bank0
+   476  07BD  1303               	bcf	status, 6	;RP1=0, select bank0
+   477  07BE  1306               	bcf	(54/8),(54)&7
+   478                           	line	72
+   479                           	
+   480  07BF                     l1934:	
+   481                           ;Vibration Sensor.c: 72: RB7=0;
+   482  07BF  1386               	bcf	(55/8),(55)&7
+   483  07C0  2FF4               	goto	l1950
+   484                           	line	74
+   485                           ;Vibration Sensor.c: 74: while(1)
+   486                           	
+   487  07C1                     l569:	
+   488                           	line	76
+   489                           ;Vibration Sensor.c: 75: {
+   490                           ;Vibration Sensor.c: 76: while(RB0==0)
+   491  07C1  2FF4               	goto	l1950
+   492                           	
+   493  07C2                     l571:	
+   494                           	line	78
+   495                           ;Vibration Sensor.c: 77: {
+   496                           ;Vibration Sensor.c: 78: while (RB0 == 1);
+   497  07C2  2FC3               	goto	l572
+   498                           	
+   499  07C3                     l573:	
+   500                           	
+   501  07C3                     l572:	
+   502  07C3  1806               	btfsc	(48/8),(48)&7
+   503  07C4  2FC6               	goto	u2281
+   504  07C5  2FC7               	goto	u2280
+   505  07C6                     u2281:
+   506  07C6  2FC3               	goto	l572
+   507  07C7                     u2280:
+   508  07C7  2FC8               	goto	l1936
+   509                           	
+   510  07C8                     l574:	
+   511                           	line	79
+   512                           	
+   513  07C8                     l1936:	
+   514                           ;Vibration Sensor.c: 79: lcd_goto(20);
+   515  07C8  3014               	movlw	(014h)
+   516  07C9  120A  118A  26BD   	fcall	_lcd_goto
+              120A  118A         
+   517                           	line	80
+   518                           	
+   519  07CE                     l1938:	
+   520                           ;Vibration Sensor.c: 80: send_string("Buzzer ON ");
+   521  07CE  301A               	movlw	((STR_2-__stringbase))&0ffh
+   522  07CF  120A  118A  2724   	fcall	_send_string
+              120A  118A         
+   523                           	line	81
+   524                           	
+   525  07D4                     l1940:	
+   526                           ;Vibration Sensor.c: 81: RB7=1;
+   527  07D4  1283               	bcf	status, 5	;RP0=0, select bank0
+   528  07D5  1303               	bcf	status, 6	;RP1=0, select bank0
+   529  07D6  1786               	bsf	(55/8),(55)&7
+   530                           	line	83
+   531                           	
+   532  07D7                     l1942:	
+   533                           ;Vibration Sensor.c: 83: delay(500000);
+   534  07D7  3000               	movlw	0
+   535  07D8  00F3               	movwf	(?_delay+3)
+   536  07D9  3007               	movlw	07h
+   537  07DA  00F2               	movwf	(?_delay+2)
+   538  07DB  30A1               	movlw	0A1h
+   539  07DC  00F1               	movwf	(?_delay+1)
+   540  07DD  3020               	movlw	020h
+   541  07DE  00F0               	movwf	(?_delay)
+   542                           
+   543  07DF  120A  118A  274A   	fcall	_delay
+              120A  118A         
+   544                           	line	84
+   545                           	
+   546  07E4                     l1944:	
+   547                           ;Vibration Sensor.c: 84: RB7=0;
+   548  07E4  1283               	bcf	status, 5	;RP0=0, select bank0
+   549  07E5  1303               	bcf	status, 6	;RP1=0, select bank0
+   550  07E6  1386               	bcf	(55/8),(55)&7
+   551                           	line	85
+   552                           	
+   553  07E7                     l1946:	
+   554                           ;Vibration Sensor.c: 85: lcd_goto(20);
+   555  07E7  3014               	movlw	(014h)
+   556  07E8  120A  118A  26BD   	fcall	_lcd_goto
+              120A  118A         
+   557                           	line	86
+   558                           	
+   559  07ED                     l1948:	
+   560                           ;Vibration Sensor.c: 86: send_string("Buzzer OFF ");
+   561  07ED  300E               	movlw	((STR_3-__stringbase))&0ffh
+   562  07EE  120A  118A  2724   	fcall	_send_string
+              120A  118A         
+   563  07F3  2FF4               	goto	l1950
+   564                           	line	87
+   565                           	
+   566  07F4                     l570:	
+   567                           	line	76
+   568                           	
+   569  07F4                     l1950:	
+   570  07F4  1283               	bcf	status, 5	;RP0=0, select bank0
+   571  07F5  1303               	bcf	status, 6	;RP1=0, select bank0
+   572  07F6  1C06               	btfss	(48/8),(48)&7
+   573  07F7  2FF9               	goto	u2291
+   574  07F8  2FFA               	goto	u2290
+   575  07F9                     u2291:
+   576  07F9  2FC3               	goto	l572
+   577  07FA                     u2290:
+   578  07FA  2FF4               	goto	l1950
+   579                           	
+   580  07FB                     l575:	
+   581  07FB  2FF4               	goto	l1950
+   582                           	line	88
+   583                           	
+   584  07FC                     l576:	
+   585                           	line	74
+   586  07FC  2FF4               	goto	l1950
+   587                           	
+   588  07FD                     l577:	
+   589                           	line	89
+   590                           	
+   591  07FD                     l578:	
+   592                           	global	start
+   593  07FD  120A  118A  2800   	ljmp	start
+   594                           	opt stack 0
+   595                           GLOBAL	__end_of_main
+   596  0800                     	__end_of_main:
+   597 ;; =============== function _main ends ============
+   598                           
+   599                           	signat	_main,88
+   600                           	global	_send_string
+   601                           psect	text157,local,class=CODE,delta=2
+   602                           global __ptext157
+   603  0724                     __ptext157:
+   604                           
+   605 ;; *************** function _send_string *****************
+   606 ;; Defined at:
+   607 ;;		line 138 in file "C:\Users\Cytron-Jogi\Desktop\Vinration sensor\Vibration Sensor.c"
+   608 ;; Parameters:    Size  Location     Type
+   609 ;;  s               1    wreg     PTR const unsigned char 
+   610 ;;		 -> STR_3(12), STR_2(11), STR_1(13), 
+   611 ;; Auto vars:     Size  Location     Type
+   612 ;;  s               1   10[COMMON] PTR const unsigned char 
+   613 ;;		 -> STR_3(12), STR_2(11), STR_1(13), 
+   614 ;; Return value:  Size  Location     Type
+   615 ;;		None               void
+   616 ;; Registers used:
+   617 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   618 ;; Tracked objects:
+   619 ;;		On entry : 0/0
+   620 ;;		On exit  : 0/0
+   621 ;;		Unchanged: 0/0
+   622 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   623 ;;      Params:         0       0       0       0       0
+   624 ;;      Locals:         1       0       0       0       0
+   625 ;;      Temps:          1       0       0       0       0
+   626 ;;      Totals:         2       0       0       0       0
+   627 ;;Total ram usage:        2 bytes
+   628 ;; Hardware stack levels used:    1
+   629 ;; Hardware stack levels required when called:    2
+   630 ;; This function calls:
+   631 ;;		_send_char
+   632 ;; This function is called by:
+   633 ;;		_main
+   634 ;; This function uses a non-reentrant model
+   635 ;;
+   636                           psect	text157
+   637                           	file	"C:\Users\Cytron-Jogi\Desktop\Vinration sensor\Vibration Sensor.c"
+   638                           	line	138
+   639                           	global	__size_of_send_string
+   640  0026                     	__size_of_send_string	equ	__end_of_send_string-_send_string
+   641                           	
+   642  0724                     _send_string:	
+   643                           	opt	stack 5
+   644                           ; Regs used in _send_string: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   645                           ;send_string@s stored from wreg
+   646  0724  00FA               	movwf	(send_string@s)
+   647                           	line	139
+   648                           	
+   649  0725                     l1898:	
+   650                           ;Vibration Sensor.c: 139: while (s && *s)send_char (*s++);
+   651  0725  2F37               	goto	l1904
+   652                           	
+   653  0726                     l601:	
+   654                           	
+   655  0726                     l1900:	
+   656  0726  087A               	movf	(send_string@s),w
+   657  0727  0084               	movwf	fsr0
+   658  0728  120A  118A  2003   	fcall	stringdir
+              120A  118A         
+   659  072D  120A  118A  26FF   	fcall	_send_char
+              120A  118A         
+   660                           	
+   661  0732                     l1902:	
+   662  0732  3001               	movlw	(01h)
+   663  0733  00F9               	movwf	(??_send_string+0)+0
+   664  0734  0879               	movf	(??_send_string+0)+0,w
+   665  0735  07FA               	addwf	(send_string@s),f
+   666  0736  2F37               	goto	l1904
+   667                           	
+   668  0737                     l600:	
+   669                           	
+   670  0737                     l1904:	
+   671  0737  087A               	movf	(send_string@s),w
+   672  0738  1D03               	skipz
+   673  0739  2F3B               	goto	u2260
+   674  073A  2F49               	goto	l605
+   675  073B                     u2260:
+   676                           	
+   677  073B                     l1906:	
+   678  073B  087A               	movf	(send_string@s),w
+   679  073C  0084               	movwf	fsr0
+   680  073D  120A  118A  2003   	fcall	stringdir
+              120A  118A         
+   681  0742  3800               	iorlw	0
+   682  0743  1D03               	skipz
+   683  0744  2F46               	goto	u2271
+   684  0745  2F47               	goto	u2270
+   685  0746                     u2271:
+   686  0746  2F26               	goto	l1900
+   687  0747                     u2270:
+   688  0747  2F49               	goto	l605
+   689                           	
+   690  0748                     l603:	
+   691  0748  2F49               	goto	l605
+   692                           	
+   693  0749                     l604:	
+   694                           	line	140
+   695                           	
+   696  0749                     l605:	
+   697  0749  0008               	return
+   698                           	opt stack 0
+   699                           GLOBAL	__end_of_send_string
+   700  074A                     	__end_of_send_string:
+   701 ;; =============== function _send_string ends ============
+   702                           
+   703                           	signat	_send_string,4216
+   704                           	global	_lcd_goto
+   705                           psect	text158,local,class=CODE,delta=2
+   706                           global __ptext158
+   707  06BD                     __ptext158:
+   708                           
+   709 ;; *************** function _lcd_goto *****************
+   710 ;; Defined at:
+   711 ;;		line 119 in file "C:\Users\Cytron-Jogi\Desktop\Vinration sensor\Vibration Sensor.c"
+   712 ;; Parameters:    Size  Location     Type
+   713 ;;  data            1    wreg     unsigned char 
+   714 ;; Auto vars:     Size  Location     Type
+   715 ;;  data            1   10[COMMON] unsigned char 
+   716 ;; Return value:  Size  Location     Type
+   717 ;;		None               void
+   718 ;; Registers used:
+   719 ;;		wreg, status,2, status,0, pclath, cstack
+   720 ;; Tracked objects:
+   721 ;;		On entry : 0/0
+   722 ;;		On exit  : 0/0
+   723 ;;		Unchanged: 0/0
+   724 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   725 ;;      Params:         0       0       0       0       0
+   726 ;;      Locals:         1       0       0       0       0
+   727 ;;      Temps:          1       0       0       0       0
+   728 ;;      Totals:         2       0       0       0       0
+   729 ;;Total ram usage:        2 bytes
+   730 ;; Hardware stack levels used:    1
+   731 ;; Hardware stack levels required when called:    2
+   732 ;; This function calls:
+   733 ;;		_send_config
+   734 ;; This function is called by:
+   735 ;;		_main
+   736 ;; This function uses a non-reentrant model
+   737 ;;
+   738                           psect	text158
+   739                           	file	"C:\Users\Cytron-Jogi\Desktop\Vinration sensor\Vibration Sensor.c"
+   740                           	line	119
+   741                           	global	__size_of_lcd_goto
+   742  001D                     	__size_of_lcd_goto	equ	__end_of_lcd_goto-_lcd_goto
+   743                           	
+   744  06BD                     _lcd_goto:	
+   745                           	opt	stack 5
+   746                           ; Regs used in _lcd_goto: [wreg+status,2+status,0+pclath+cstack]
+   747                           ;lcd_goto@data stored from wreg
+   748  06BD  00FA               	movwf	(lcd_goto@data)
+   749                           	line	120
+   750                           	
+   751  06BE                     l1890:	
+   752                           ;Vibration Sensor.c: 120: if(data<16)
+   753  06BE  3010               	movlw	(010h)
+   754  06BF  027A               	subwf	(lcd_goto@data),w
+   755  06C0  1803               	skipnc
+   756  06C1  2EC3               	goto	u2251
+   757  06C2  2EC4               	goto	u2250
+   758  06C3                     u2251:
+   759  06C3  2ECC               	goto	l1894
+   760  06C4                     u2250:
+   761                           	line	122
+   762                           	
+   763  06C4                     l1892:	
+   764                           ;Vibration Sensor.c: 121: {
+   765                           ;Vibration Sensor.c: 122: send_config(0x80+data);
+   766  06C4  087A               	movf	(lcd_goto@data),w
+   767  06C5  3E80               	addlw	080h
+   768  06C6  120A  118A  26DA   	fcall	_send_config
+              120A  118A         
+   769                           	line	123
+   770                           ;Vibration Sensor.c: 123: }
+   771  06CB  2ED9               	goto	l594
+   772                           	line	124
+   773                           	
+   774  06CC                     l592:	
+   775                           	line	126
+   776                           	
+   777  06CC                     l1894:	
+   778                           ;Vibration Sensor.c: 124: else
+   779                           ;Vibration Sensor.c: 125: {
+   780                           ;Vibration Sensor.c: 126: data=data-20;
+   781  06CC  087A               	movf	(lcd_goto@data),w
+   782  06CD  3EEC               	addlw	0ECh
+   783  06CE  00F9               	movwf	(??_lcd_goto+0)+0
+   784  06CF  0879               	movf	(??_lcd_goto+0)+0,w
+   785  06D0  00FA               	movwf	(lcd_goto@data)
+   786                           	line	127
+   787                           	
+   788  06D1                     l1896:	
+   789                           ;Vibration Sensor.c: 127: send_config(0xc0+data);
+   790  06D1  087A               	movf	(lcd_goto@data),w
+   791  06D2  3EC0               	addlw	0C0h
+   792  06D3  120A  118A  26DA   	fcall	_send_config
+              120A  118A         
+   793  06D8  2ED9               	goto	l594
+   794                           	line	128
+   795                           	
+   796  06D9                     l593:	
+   797                           	line	129
+   798                           	
+   799  06D9                     l594:	
+   800  06D9  0008               	return
+   801                           	opt stack 0
+   802                           GLOBAL	__end_of_lcd_goto
+   803  06DA                     	__end_of_lcd_goto:
+   804 ;; =============== function _lcd_goto ends ============
+   805                           
+   806                           	signat	_lcd_goto,4216
+   807                           	global	_lcd_clr
+   808                           psect	text159,local,class=CODE,delta=2
+   809                           global __ptext159
+   810  06A9                     __ptext159:
+   811                           
+   812 ;; *************** function _lcd_clr *****************
+   813 ;; Defined at:
+   814 ;;		line 132 in file "C:\Users\Cytron-Jogi\Desktop\Vinration sensor\Vibration Sensor.c"
+   815 ;; Parameters:    Size  Location     Type
+   816 ;;		None
+   817 ;; Auto vars:     Size  Location     Type
+   818 ;;		None
+   819 ;; Return value:  Size  Location     Type
+   820 ;;		None               void
+   821 ;; Registers used:
+   822 ;;		wreg, status,2, status,0, pclath, cstack
+   823 ;; Tracked objects:
+   824 ;;		On entry : 0/0
+   825 ;;		On exit  : 0/0
+   826 ;;		Unchanged: 0/0
+   827 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   828 ;;      Params:         0       0       0       0       0
+   829 ;;      Locals:         0       0       0       0       0
+   830 ;;      Temps:          0       0       0       0       0
+   831 ;;      Totals:         0       0       0       0       0
+   832 ;;Total ram usage:        0 bytes
+   833 ;; Hardware stack levels used:    1
+   834 ;; Hardware stack levels required when called:    2
+   835 ;; This function calls:
+   836 ;;		_send_config
+   837 ;;		_delay
+   838 ;; This function is called by:
+   839 ;;		_main
+   840 ;; This function uses a non-reentrant model
+   841 ;;
+   842                           psect	text159
+   843                           	file	"C:\Users\Cytron-Jogi\Desktop\Vinration sensor\Vibration Sensor.c"
+   844                           	line	132
+   845                           	global	__size_of_lcd_clr
+   846  0014                     	__size_of_lcd_clr	equ	__end_of_lcd_clr-_lcd_clr
+   847                           	
+   848  06A9                     _lcd_clr:	
+   849                           	opt	stack 5
+   850                           ; Regs used in _lcd_clr: [wreg+status,2+status,0+pclath+cstack]
+   851                           	line	133
+   852                           	
+   853  06A9                     l1888:	
+   854                           ;Vibration Sensor.c: 133: send_config(0x01);
+   855  06A9  3001               	movlw	(01h)
+   856  06AA  120A  118A  26DA   	fcall	_send_config
+              120A  118A         
+   857                           	line	134
+   858                           ;Vibration Sensor.c: 134: delay(600);
+   859  06AF  3000               	movlw	0
+   860  06B0  00F3               	movwf	(?_delay+3)
+   861  06B1  3000               	movlw	0
+   862  06B2  00F2               	movwf	(?_delay+2)
+   863  06B3  3002               	movlw	02h
+   864  06B4  00F1               	movwf	(?_delay+1)
+   865  06B5  3058               	movlw	058h
+   866  06B6  00F0               	movwf	(?_delay)
+   867                           
+   868  06B7  120A  118A  274A   	fcall	_delay
+              120A  118A         
+   869                           	line	135
+   870                           	
+   871  06BC                     l597:	
+   872  06BC  0008               	return
+   873                           	opt stack 0
+   874                           GLOBAL	__end_of_lcd_clr
+   875  06BD                     	__end_of_lcd_clr:
+   876 ;; =============== function _lcd_clr ends ============
+   877                           
+   878                           	signat	_lcd_clr,88
+   879                           	global	_send_char
+   880                           psect	text160,local,class=CODE,delta=2
+   881                           global __ptext160
+   882  06FF                     __ptext160:
+   883                           
+   884 ;; *************** function _send_char *****************
+   885 ;; Defined at:
+   886 ;;		line 109 in file "C:\Users\Cytron-Jogi\Desktop\Vinration sensor\Vibration Sensor.c"
+   887 ;; Parameters:    Size  Location     Type
+   888 ;;  data            1    wreg     unsigned char 
+   889 ;; Auto vars:     Size  Location     Type
+   890 ;;  data            1    8[COMMON] unsigned char 
+   891 ;; Return value:  Size  Location     Type
+   892 ;;		None               void
+   893 ;; Registers used:
+   894 ;;		wreg, status,2, status,0, pclath, cstack
+   895 ;; Tracked objects:
+   896 ;;		On entry : 0/0
+   897 ;;		On exit  : 0/0
+   898 ;;		Unchanged: 0/0
+   899 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   900 ;;      Params:         0       0       0       0       0
+   901 ;;      Locals:         1       0       0       0       0
+   902 ;;      Temps:          0       0       0       0       0
+   903 ;;      Totals:         1       0       0       0       0
+   904 ;;Total ram usage:        1 bytes
+   905 ;; Hardware stack levels used:    1
+   906 ;; Hardware stack levels required when called:    1
+   907 ;; This function calls:
+   908 ;;		_delay
+   909 ;; This function is called by:
+   910 ;;		_send_string
+   911 ;; This function uses a non-reentrant model
+   912 ;;
+   913                           psect	text160
+   914                           	file	"C:\Users\Cytron-Jogi\Desktop\Vinration sensor\Vibration Sensor.c"
+   915                           	line	109
+   916                           	global	__size_of_send_char
+   917  0025                     	__size_of_send_char	equ	__end_of_send_char-_send_char
+   918                           	
+   919  06FF                     _send_char:	
+   920                           	opt	stack 5
+   921                           ; Regs used in _send_char: [wreg+status,2+status,0+pclath+cstack]
+   922                           ;send_char@data stored from wreg
+   923  06FF  00F8               	movwf	(send_char@data)
+   924                           	line	110
+   925                           	
+   926  0700                     l1876:	
+   927                           ;Vibration Sensor.c: 110: RB4=1;
+   928  0700  1283               	bcf	status, 5	;RP0=0, select bank0
+   929  0701  1303               	bcf	status, 6	;RP1=0, select bank0
+   930  0702  1606               	bsf	(52/8),(52)&7
+   931                           	line	111
+   932                           	
+   933  0703                     l1878:	
+   934                           ;Vibration Sensor.c: 111: PORTD=data;
+   935  0703  0878               	movf	(send_char@data),w
+   936  0704  0088               	movwf	(8)	;volatile
+   937                           	line	112
+   938                           	
+   939  0705                     l1880:	
+   940                           ;Vibration Sensor.c: 112: RB5=1;
+   941  0705  1686               	bsf	(53/8),(53)&7
+   942                           	line	113
+   943                           	
+   944  0706                     l1882:	
+   945                           ;Vibration Sensor.c: 113: delay(10);
+   946  0706  3000               	movlw	0
+   947  0707  00F3               	movwf	(?_delay+3)
+   948  0708  3000               	movlw	0
+   949  0709  00F2               	movwf	(?_delay+2)
+   950  070A  3000               	movlw	0
+   951  070B  00F1               	movwf	(?_delay+1)
+   952  070C  300A               	movlw	0Ah
+   953  070D  00F0               	movwf	(?_delay)
+   954                           
+   955  070E  120A  118A  274A   	fcall	_delay
+              120A  118A         
+   956                           	line	114
+   957                           	
+   958  0713                     l1884:	
+   959                           ;Vibration Sensor.c: 114: RB5=0;
+   960  0713  1283               	bcf	status, 5	;RP0=0, select bank0
+   961  0714  1303               	bcf	status, 6	;RP1=0, select bank0
+   962  0715  1286               	bcf	(53/8),(53)&7
+   963                           	line	115
+   964                           	
+   965  0716                     l1886:	
+   966                           ;Vibration Sensor.c: 115: delay(10);
+   967  0716  3000               	movlw	0
+   968  0717  00F3               	movwf	(?_delay+3)
+   969  0718  3000               	movlw	0
+   970  0719  00F2               	movwf	(?_delay+2)
+   971  071A  3000               	movlw	0
+   972  071B  00F1               	movwf	(?_delay+1)
+   973  071C  300A               	movlw	0Ah
+   974  071D  00F0               	movwf	(?_delay)
+   975                           
+   976  071E  120A  118A  274A   	fcall	_delay
+              120A  118A         
+   977                           	line	116
+   978                           	
+   979  0723                     l589:	
+   980  0723  0008               	return
+   981                           	opt stack 0
+   982                           GLOBAL	__end_of_send_char
+   983  0724                     	__end_of_send_char:
+   984 ;; =============== function _send_char ends ============
+   985                           
+   986                           	signat	_send_char,4216
+   987                           	global	_send_config
+   988                           psect	text161,local,class=CODE,delta=2
+   989                           global __ptext161
+   990  06DA                     __ptext161:
+   991                           
+   992 ;; *************** function _send_config *****************
+   993 ;; Defined at:
+   994 ;;		line 99 in file "C:\Users\Cytron-Jogi\Desktop\Vinration sensor\Vibration Sensor.c"
+   995 ;; Parameters:    Size  Location     Type
+   996 ;;  data            1    wreg     unsigned char 
+   997 ;; Auto vars:     Size  Location     Type
+   998 ;;  data            1    8[COMMON] unsigned char 
+   999 ;; Return value:  Size  Location     Type
+  1000 ;;		None               void
+  1001 ;; Registers used:
+  1002 ;;		wreg, status,2, status,0, pclath, cstack
+  1003 ;; Tracked objects:
+  1004 ;;		On entry : 0/0
+  1005 ;;		On exit  : 0/0
+  1006 ;;		Unchanged: 0/0
+  1007 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1008 ;;      Params:         0       0       0       0       0
+  1009 ;;      Locals:         1       0       0       0       0
+  1010 ;;      Temps:          0       0       0       0       0
+  1011 ;;      Totals:         1       0       0       0       0
+  1012 ;;Total ram usage:        1 bytes
+  1013 ;; Hardware stack levels used:    1
+  1014 ;; Hardware stack levels required when called:    1
+  1015 ;; This function calls:
+  1016 ;;		_delay
+  1017 ;; This function is called by:
+  1018 ;;		_main
+  1019 ;;		_lcd_goto
+  1020 ;;		_lcd_clr
+  1021 ;; This function uses a non-reentrant model
+  1022 ;;
+  1023                           psect	text161
+  1024                           	file	"C:\Users\Cytron-Jogi\Desktop\Vinration sensor\Vibration Sensor.c"
+  1025                           	line	99
+  1026                           	global	__size_of_send_config
+  1027  0025                     	__size_of_send_config	equ	__end_of_send_config-_send_config
+  1028                           	
+  1029  06DA                     _send_config:	
+  1030                           	opt	stack 5
+  1031                           ; Regs used in _send_config: [wreg+status,2+status,0+pclath+cstack]
+  1032                           ;send_config@data stored from wreg
+  1033  06DA  00F8               	movwf	(send_config@data)
+  1034                           	line	100
+  1035                           	
+  1036  06DB                     l1864:	
+  1037                           ;Vibration Sensor.c: 100: RB4=0;
+  1038  06DB  1283               	bcf	status, 5	;RP0=0, select bank0
+  1039  06DC  1303               	bcf	status, 6	;RP1=0, select bank0
+  1040  06DD  1206               	bcf	(52/8),(52)&7
+  1041                           	line	101
+  1042                           	
+  1043  06DE                     l1866:	
+  1044                           ;Vibration Sensor.c: 101: PORTD=data;
+  1045  06DE  0878               	movf	(send_config@data),w
+  1046  06DF  0088               	movwf	(8)	;volatile
+  1047                           	line	102
+  1048                           	
+  1049  06E0                     l1868:	
+  1050                           ;Vibration Sensor.c: 102: RB5=1;
+  1051  06E0  1686               	bsf	(53/8),(53)&7
+  1052                           	line	103
+  1053                           	
+  1054  06E1                     l1870:	
+  1055                           ;Vibration Sensor.c: 103: delay(50);
+  1056  06E1  3000               	movlw	0
+  1057  06E2  00F3               	movwf	(?_delay+3)
+  1058  06E3  3000               	movlw	0
+  1059  06E4  00F2               	movwf	(?_delay+2)
+  1060  06E5  3000               	movlw	0
+  1061  06E6  00F1               	movwf	(?_delay+1)
+  1062  06E7  3032               	movlw	032h
+  1063  06E8  00F0               	movwf	(?_delay)
+  1064                           
+  1065  06E9  120A  118A  274A   	fcall	_delay
+              120A  118A         
+  1066                           	line	104
+  1067                           	
+  1068  06EE                     l1872:	
+  1069                           ;Vibration Sensor.c: 104: RB5=0;
+  1070  06EE  1283               	bcf	status, 5	;RP0=0, select bank0
+  1071  06EF  1303               	bcf	status, 6	;RP1=0, select bank0
+  1072  06F0  1286               	bcf	(53/8),(53)&7
+  1073                           	line	105
+  1074                           	
+  1075  06F1                     l1874:	
+  1076                           ;Vibration Sensor.c: 105: delay(50);
+  1077  06F1  3000               	movlw	0
+  1078  06F2  00F3               	movwf	(?_delay+3)
+  1079  06F3  3000               	movlw	0
+  1080  06F4  00F2               	movwf	(?_delay+2)
+  1081  06F5  3000               	movlw	0
+  1082  06F6  00F1               	movwf	(?_delay+1)
+  1083  06F7  3032               	movlw	032h
+  1084  06F8  00F0               	movwf	(?_delay)
+  1085                           
+  1086  06F9  120A  118A  274A   	fcall	_delay
+              120A  118A         
+  1087                           	line	106
+  1088                           	
+  1089  06FE                     l586:	
+  1090  06FE  0008               	return
+  1091                           	opt stack 0
+  1092                           GLOBAL	__end_of_send_config
+  1093  06FF                     	__end_of_send_config:
+  1094 ;; =============== function _send_config ends ============
+  1095                           
+  1096                           	signat	_send_config,4216
+  1097                           	global	_delay
+  1098                           psect	text162,local,class=CODE,delta=2
+  1099                           global __ptext162
+  1100  074A                     __ptext162:
+  1101                           
+  1102 ;; *************** function _delay *****************
+  1103 ;; Defined at:
+  1104 ;;		line 94 in file "C:\Users\Cytron-Jogi\Desktop\Vinration sensor\Vibration Sensor.c"
+  1105 ;; Parameters:    Size  Location     Type
+  1106 ;;  data            4    0[COMMON] unsigned long 
+  1107 ;; Auto vars:     Size  Location     Type
+  1108 ;;		None
+  1109 ;; Return value:  Size  Location     Type
+  1110 ;;		None               void
+  1111 ;; Registers used:
+  1112 ;;		wreg
+  1113 ;; Tracked objects:
+  1114 ;;		On entry : 0/0
+  1115 ;;		On exit  : 0/0
+  1116 ;;		Unchanged: 0/0
+  1117 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1118 ;;      Params:         4       0       0       0       0
+  1119 ;;      Locals:         0       0       0       0       0
+  1120 ;;      Temps:          4       0       0       0       0
+  1121 ;;      Totals:         8       0       0       0       0
+  1122 ;;Total ram usage:        8 bytes
+  1123 ;; Hardware stack levels used:    1
+  1124 ;; This function calls:
+  1125 ;;		Nothing
+  1126 ;; This function is called by:
+  1127 ;;		_main
+  1128 ;;		_send_config
+  1129 ;;		_send_char
+  1130 ;;		_lcd_clr
+  1131 ;; This function uses a non-reentrant model
+  1132 ;;
+  1133                           psect	text162
+  1134                           	file	"C:\Users\Cytron-Jogi\Desktop\Vinration sensor\Vibration Sensor.c"
+  1135                           	line	94
+  1136                           	global	__size_of_delay
+  1137  0030                     	__size_of_delay	equ	__end_of_delay-_delay
+  1138                           	
+  1139  074A                     _delay:	
+  1140                           	opt	stack 7
+  1141                           ; Regs used in _delay: [wreg]
+  1142                           	line	95
+  1143                           	
+  1144  074A                     l1858:	
+  1145                           ;Vibration Sensor.c: 95: for( ;data>0;data--);
+  1146  074A  0873               	movf	(delay@data+3),w
+  1147  074B  0472               	iorwf	(delay@data+2),w
+  1148  074C  0471               	iorwf	(delay@data+1),w
+  1149  074D  0470               	iorwf	(delay@data),w
+  1150  074E  1D03               	skipz
+  1151  074F  2F51               	goto	u2221
+  1152  0750  2F52               	goto	u2220
+  1153  0751                     u2221:
+  1154  0751  2F54               	goto	l1862
+  1155  0752                     u2220:
+  1156  0752  2F79               	goto	l583
+  1157                           	
+  1158  0753                     l1860:	
+  1159  0753  2F79               	goto	l583
+  1160                           	
+  1161  0754                     l581:	
+  1162                           	
+  1163  0754                     l1862:	
+  1164  0754  3001               	movlw	01h
+  1165  0755  00F4               	movwf	((??_delay+0)+0)
+  1166  0756  3000               	movlw	0
+  1167  0757  00F5               	movwf	((??_delay+0)+0+1)
+  1168  0758  3000               	movlw	0
+  1169  0759  00F6               	movwf	((??_delay+0)+0+2)
+  1170  075A  3000               	movlw	0
+  1171  075B  00F7               	movwf	((??_delay+0)+0+3)
+  1172  075C  0874               	movf	0+(??_delay+0)+0,w
+  1173  075D  02F0               	subwf	(delay@data),f
+  1174  075E  0875               	movf	1+(??_delay+0)+0,w
+  1175  075F  1C03               	skipc
+  1176  0760  0F75               	incfsz	1+(??_delay+0)+0,w
+  1177  0761  2F63               	goto	u2235
+  1178  0762  2F64               	goto	u2236
+  1179  0763                     u2235:
+  1180  0763  02F1               	subwf	(delay@data+1),f
+  1181  0764                     u2236:
+  1182  0764  0876               	movf	2+(??_delay+0)+0,w
+  1183  0765  1C03               	skipc
+  1184  0766  0F76               	incfsz	2+(??_delay+0)+0,w
+  1185  0767  2F69               	goto	u2237
+  1186  0768  2F6A               	goto	u2238
+  1187  0769                     u2237:
+  1188  0769  02F2               	subwf	(delay@data+2),f
+  1189  076A                     u2238:
+  1190  076A  0877               	movf	3+(??_delay+0)+0,w
+  1191  076B  1C03               	skipc
+  1192  076C  0F77               	incfsz	3+(??_delay+0)+0,w
+  1193  076D  2F6F               	goto	u2239
+  1194  076E  2F70               	goto	u2230
+  1195  076F                     u2239:
+  1196  076F  02F3               	subwf	(delay@data+3),f
+  1197  0770                     u2230:
+  1198                           
+  1199  0770  0873               	movf	(delay@data+3),w
+  1200  0771  0472               	iorwf	(delay@data+2),w
+  1201  0772  0471               	iorwf	(delay@data+1),w
+  1202  0773  0470               	iorwf	(delay@data),w
+  1203  0774  1D03               	skipz
+  1204  0775  2F77               	goto	u2241
+  1205  0776  2F78               	goto	u2240
+  1206  0777                     u2241:
+  1207  0777  2F54               	goto	l1862
+  1208  0778                     u2240:
+  1209  0778  2F79               	goto	l583
+  1210                           	
+  1211  0779                     l582:	
+  1212                           	line	96
+  1213                           	
+  1214  0779                     l583:	
+  1215  0779  0008               	return
+  1216                           	opt stack 0
+  1217                           GLOBAL	__end_of_delay
+  1218  077A                     	__end_of_delay:
+  1219 ;; =============== function _delay ends ============
+  1220                           
+  1221                           	signat	_delay,4216
+  1222                           psect	text163,local,class=CODE,delta=2
+  1223                           global __ptext163
+  1224  0000                     __ptext163:
+  1225                           	global	btemp
+  1226  007E                     	btemp set 07Eh
+  1227                           
+  1228                           	DABS	1,126,2	;btemp
+  1229                           	global	wtemp0
+  1230  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.80 build 6738 
+Symbol Table                                                                                   Mon Aug 04 12:26:56 2014
+
+                   pc 0002                    fsr 0004                   l600 0737                   l601 0726  
+                 l603 0748                   l604 0749                   l605 0749                   l570 07F4  
+                 l571 07C2                   l572 07C3                   l581 0754                   l573 07C3  
+                 l582 0779                   l574 07C8                   l583 0779                   l575 07FB  
+                 l592 06CC                   l576 07FC                   l593 06D9                   l577 07FD  
+                 l569 07C1                   l586 06FE                   l594 06D9                   l578 07FD  
+                 l589 0723                   l597 06BC                   _RB0 0030                   _RB4 0034  
+                 _RB5 0035                   _RB6 0036                   _RB7 0037                   fsr0 0004  
+     send_config@data 0078                  l1900 0726                  l1902 0732                  l1910 0788  
+                l1904 0737                  l1920 0799                  l1912 0789                  l1906 073B  
+                l1930 07B6                  l1922 079F                  l1914 078B                  l1860 0753  
+                l1940 07D4                  l1932 07BC                  l1924 07A5                  l1916 078D  
+                l1908 077A                  l1862 0754                  l1870 06E1                  l1942 07D7  
+                l1950 07F4                  l1934 07BF                  l1926 07AB                  l1918 0793  
+                l1872 06EE                  l1864 06DB                  l1880 0705                  l1944 07E4  
+                l1936 07C8                  l1928 07B0                  l1858 074A                  l1874 06F1  
+                l1866 06DE                  l1882 0706                  l1890 06BE                  l1946 07E7  
+                l1938 07CE                  l1868 06E0                  l1884 0713                  l1876 0700  
+                l1892 06C4                  l1948 07ED                  l1886 0716                  l1878 0703  
+                l1894 06CC                  l1888 06A9                  l1896 06D1                  l1898 0725  
+                STR_1 0009                  STR_2 0022                  STR_3 0016                  u2220 0752  
+                u2221 0751                  u2230 0770                  u2240 0778                  u2241 0777  
+                u2250 06C4                  u2235 0763                  u2251 06C3                  u2236 0764  
+                u2260 073B                  u2237 0769                  u2238 076A                  u2270 0747  
+                u2239 076F                  u2271 0746                  u2280 07C7                  u2281 07C6  
+                u2290 07FA                  u2291 07F9                  _main 077A                  btemp 007E  
+        lcd_goto@data 007A                  start 0000                 ?_main 0070                 _PORTD 0008  
+               _TRISA 0085                 _TRISB 0086                 _TRISD 0088       __end_of_lcd_clr 06BD  
+               _delay 074A                 pclath 000A                 status 0003                 wtemp0 007E  
+        __end_of_main 0800                ??_main 007B                ?_delay 0070          ?_send_config 0070  
+              _ADCON1 009F          ?_send_string 0070      __end_of_lcd_goto 06DA             ??_lcd_clr 0079  
+      __pcstackCOMMON 0070         __end_of_delay 077A        main@delay_time 0020               ??_delay 0074  
+          __pmaintext 077A    __size_of_send_char 0025             ?_lcd_goto 0070  __size_of_send_config 0025  
+__size_of_send_string 0026               _lcd_clr 06A9            ??_lcd_goto 0079  end_of_initialization 06A5  
+   __end_of_send_char 0724         send_char@data 0078   start_initialization 06A5         __pcstackBANK0 0020  
+   __size_of_lcd_goto 001D             __ptext160 06FF             __ptext161 06DA             __ptext162 074A  
+           __ptext163 0000             __ptext156 0000             __ptext157 0724             __ptext158 06BD  
+           __ptext159 06A9             __pstrings 0003              ?_lcd_clr 0070         ??_send_config 0078  
+      __size_of_delay 0030             delay@data 0070         ??_send_string 0079             _send_char 06FF  
+         __stringbase 0008   __end_of_send_config 06FF            ?_send_char 0070          send_string@s 007A  
+ __end_of_send_string 074A      __size_of_lcd_clr 0014              _lcd_goto 06BD         __size_of_main 0086  
+         _send_config 06DA           _send_string 0724           ??_send_char 0078             stringcode 0003  
+            stringdir 0003              stringtab 0003  
